@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Liao – Robotics &amp; AI Engineer</title>
+  <meta name="description" content="Personal homepage for John Liao — robotics, AI, and embedded systems projects, and contact." />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="John Liao – Robotics &amp; AI Engineer" />
+  <meta property="og:description" content="Robotics, AI, and embedded systems projects." />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== Base Styles ====== */
+    :root {
+      --bg: #ffffff;
+      --text: #101828; /* slate-900 */
+      --muted: #475467; /* slate-600 */
+      --card: #f8fafc; /* slate-50 */
+      --accent: #2563eb; /* blue-600 */
+      --accent-foreground: #ffffff;
+      --border: #e2e8f0; /* slate-200 */
+      --ring: #93c5fd; /* blue-300 */
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220; /* dark bg */
+        --text: #e6eefc;
+        --muted: #9fb0d0;
+        --card: #0f172a; /* slate-900 */
+        --accent: #60a5fa; /* blue-400 */
+        --accent-foreground: #0b1220;
+        --border: #1f2a44;
+        --ring: #1d4ed8;
+      }
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ====== Header / Nav ====== */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus { left: 16px; top: 16px; width: auto; height: auto; padding: 8px 12px; background: var(--card); border-radius: 8px; }
+
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-weight: 800; letter-spacing: .2px; }
+    .nav a { padding: 10px 12px; border-radius: 12px; }
+    .nav a:hover { background: var(--card); text-decoration: none; }
+    .menu-btn { display: none; }
+
+    @media (max-width: 720px) {
+      .menu-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--border); background: var(--card); border-radius: 12px; }
+      .links { display: none; }
+      .links.open { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+      .nav { flex-wrap: wrap; }
+    }
+
+    /* ====== Sections ====== */
+    section { padding: 56px 0; }
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 12px; letter-spacing: .25px; }
+    .h1 { font-size: clamp(32px, 6vw, 54px); line-height: 1.1; margin: 12px 0 10px; font-weight: 800; }
+    .lead { color: var(--muted); font-size: clamp(16px, 2vw, 18px); }
+    .cta { display: flex; gap: 12px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text); font-weight: 600; text-decoration: none;
+    }
+    .btn.primary { background: var(--accent); color: var(--accent-foreground); border-color: color-mix(in oklab, var(--accent) 85%, black); }
+    .btn:focus { outline: 3px solid var(--ring); outline-offset: 2px; }
+    .avatar { width: 160px; height: 160px; border-radius: 22px; object-fit: cover; border: 1px solid var(--border); }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .avatar { width: 120px; height: 120px; } }
+
+    /* Cards */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .card { border: 1px solid var(--border); background: var(--card); border-radius: 16px; padding: 16px; }
+    .card h3 { margin: 8px 0; font-size: 18px; }
+    .card p { margin: 0 0 8px; color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <div class="brand">John Liao</div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuLinks">☰ Menu</button>
+      <nav id="menuLinks" class="links" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- ====== Hero ====== -->
+    <section class="hero" id="home">
+      <div>
+        <span class="pill">👋 Hi, I’m John</span>
+        <h1 class="h1">I build intelligent robotic systems.</h1>
+        <p class="lead">Robotics and AI engineer with 15+ years of experience building intelligent systems, from low-level firmware to high-level applications like NLP and generative AI. Based in Singapore, I lead R&D projects across healthcare, defence, and industrial domains.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See projects →</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;">
+        <!-- Replace the src with your own image path -->
+        <img class="avatar" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=800&auto=format&fit=crop" alt="Portrait of John Liao" loading="lazy" width="160" height="160" />
+      </div>
+    </section>
+
+    <!-- ====== Projects ====== -->
+    <section id="projects">
+      <h2>Featured Projects &amp; Experience</h2>
+      <p class="lead">A selection of projects and roles where I've designed and built complex systems.</p>
+      <div class="grid" role="list">
+        <article class="card" role="listitem">
+          <h3>Autonomous Maritime &amp; AI Systems</h3>
+          <p>Led R&D for autonomous maritime robotics and chatbot systems, integrating LLMs for dynamic task execution and agentic behaviours.</p>
+          <a class="btn" href="#">View details</a>
+        </article>
+        <article class="card" role="listitem">
+          <h3>RNA Nursing Robot</h3>
+          <p>Architected and led core development of a ROS-based nursing robot for hospital trials, featuring autonomous navigation and patient interaction.</p>
+          <a class="btn" href="#">View details</a>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Secure Storage Firmware</h3>
+          <p>Key contributor to Seagate’s first Self-Encrypting Drive (SED), developing firmware for FIPS-certified hybrid drives with TCG compliance.</p>
+          <a class="btn" href="#">View details</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== About ====== -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm a robotics and AI engineer with 15+ years of hands-on experience, building intelligent robotic systems from low-level firmware to high-level applications like NLP, video analysis, and generative AI.</p>
+      <p>I started with embedded software, Linux kernel development, and system security. Over time, I moved up the stack to system integration, real-time control, and autonomous navigation using C++, Python, and ROS. Today, I lead R&D projects across healthcare, defence, and industrial domains—designing robotic architectures, integrating sensor fusion, and applying machine learning to create more adaptive, context-aware robots.</p>
+      <ul>
+        <li>Based in Singapore 🇸🇬</li>
+        <li><strong>Robotics &amp; AI:</strong> Autonomous navigation, NLP, Generative AI, ROS</li>
+        <li><strong>Software:</strong> C++, Python, PyTorch, OpenCV, Kafka</li>
+        <li><strong>Systems:</strong> Embedded Linux, Kernel Development, System Security</li>
+        <li><strong>Leadership:</strong> R&D Team Leadership, Agile/Scrum, Product Management</li>
+      </ul>
+    </section>
+
+    <!-- ====== Contact ====== -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="lead">The fastest way is email. I usually reply within a day.</p>
+      <p>
+        <a class="btn primary" href="mailto:you@example.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> John Liao. All rights reserved.</div>
+  </footer>
+
+  <!-- Minimal JS for small enhancements -->
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('menuLinks');
+    btn?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Optional: Structured data (update with your details) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Liao",
+    "url": "https://example.com/",
+    "jobTitle": "Software Engineer",
+    "worksFor": {"@type": "Organization", "name": "—"},
+    "address": {"@type": "PostalAddress", "addressCountry": "SG"},
+    "sameAs": [
+      "https://github.com/yourhandle",
+      "https://www.linkedin.com/in/yourhandle/"
+    ]
+  }
+  </script>
+</body>
+</html>
